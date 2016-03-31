@@ -1,4 +1,4 @@
-FROM golang:1.5.1
+FROM daocloud.io/library/golang:1.5.1
 
 MAINTAINER jiangd@vmware.com
 
