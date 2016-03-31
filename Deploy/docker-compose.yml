@@ -1,5 +1,6 @@
 log:
-  build: ./log/
+  #build: ./log/
+  image: codejuan/harbor_log
   volumes:
     - /var/log/harbor/:/var/log/docker/
   ports:
@@ -20,7 +21,8 @@ registry:
     syslog-address: "tcp://127.0.0.1:1514"
     syslog-tag: "registry"
 mysql:
-  build: ./db/
+  #build: ./db/
+  image: codejuan/harbor_mysql
   volumes:
     - /data/database:/var/lib/mysql
   env_file:
@@ -32,7 +34,8 @@ mysql:
     syslog-address: "tcp://127.0.0.1:1514"
     syslog-tag: "mysql"
 ui:
-  build: ../
+  #build: ../
+  image: codejuan/harbor_ui
   env_file:
     - ./config/ui/env
   volumes:
@@ -47,7 +50,7 @@ ui:
     syslog-address: "tcp://127.0.0.1:1514"
     syslog-tag: "ui"
 proxy:
-  image: daocloud.io/library/nginx:1.9
+  image: codejuan/harbor_proxy
   volumes:
     - ./config/nginx:/etc/nginx
   links:
